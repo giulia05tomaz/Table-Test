@@ -1,3 +1,35 @@
+#TableRegister{
+  display: none;
+}
+
+#Register{
+  display: none;
+}
+
+body[page=table] #TableRegister{
+  display: block;
+}
+
+body[page=newregister] #Register{
+  display: block;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse ;
+}
+
+table th, table td{
+  font-size: 14;
+  padding: 10px 15px;
+  border: solid 1px #ccc;
+}
+
 .item {
   width: 500px;
   padding: 1em;
@@ -16,6 +48,26 @@
 
 .paginationButton:hover{
   background-color:aquamarine;
+}
+
+#btn{
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #07a;
+  color: #ccc;
+  margin: 3px;
+  padding: 10px;
+}
+
+#btn.gray{
+  background-color: #ccc;
+  color: #666;
+
+}
+
+#btn:hover{
+  opacity: 0.8;
 }
 
 

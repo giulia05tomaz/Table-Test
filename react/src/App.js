@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 import PaginationComponent from './PaginationComponent';
 import PaginationSelector from './PaginationSelector';
 
+
 function App() {
 
   const [itens, setItens] = useState([])
@@ -16,35 +17,39 @@ function App() {
 
     useEffect(() => {
       const fetchData = async () => {
-      const result = await fetch('https://jsonplaceholder.typicode.com/todos')
-        .then(response => response.json())
-        .then(data => data)
-
-        setItens(result)
-
+      
         }
         fetchData()
       }, [])
+
+      
 
       useEffect(() => {
         setCurrentPage(0)
       }, [itensPerPage])
 
+         
+
   return (
 
-    <div className="App">
-
-     
     
-      <PaginationSelector itensPerPage={itensPerPage} setItensPerPage={setItensPerPage}/>
 
-        {currentItens.map(item => {
-          return <div className='item'><span>{item.id}</span><span>{item.title}</span><span>{item.completed}</span></div>
-        })} 
+<div className="App">
 
-        <PaginationComponent pages={pages} currentPage= {currentPage} setCurrentPage={setCurrentPage} />
 
-    </div>
+  
+
+<PaginationSelector itensPerPage={itensPerPage} setItensPerPage={setItensPerPage}/>
+
+{currentItens.map(item => {
+  return <div className='item'></div>
+})} 
+
+<PaginationComponent pages={pages} currentPage= {currentPage} setCurrentPage={setCurrentPage} />
+
+
+</div>
+    
   );
 }
 

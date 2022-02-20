@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 
 
+
 const PaginationComponent = ({pages, currentPage, setCurrentPage}) => {
     return (
         <div>

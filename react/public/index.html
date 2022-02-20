@@ -24,20 +24,93 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <link rel="stylesheet" href="../src/App.css">
+    <script type="text/javascript" src="table.js"></script>
+      
+    </script>
+    <title>Table-test</title>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <body page = 'table'>
+    
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id='TableRegister'>
+      <table>
+        <thead>
+           <tr>
+             <th>ID</th>
+             <th>Nome</th>
+             <th>Idade</th>
+             <th> Estado Civil</th>
+             <th>CPF</th>
+             <th>Cidade</th>
+             <th>Estado</th>
+           </tr>
+        </thead>
+        <tbody></tbody>
+        
+      </table>
+      <button onclick="visualization('newregister')" id="btn">Novo Uduario</button>
+    </div>
+   <div id='Register'>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+     <div className='label'>
+       <div>ID</div>
+       <div>
+         <input type="number"></input>
+       </div>
+     </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+     <div className='label'>
+       <div>Nome</div>
+       <div>
+         <input type="text"></input>
+       </div>
+     </div>
+
+     <div className='label'>
+       <div>Idade</div>
+       <div>
+         <input type="number"></input>
+       </div>
+     </div>
+
+     <div className='label'>
+       <div>Estado Civil</div>
+       <div>
+         <input type="text"></input>
+       </div>
+     </div>
+
+     <div className='label'>
+       <div>CPF</div>
+       <div>
+         <input type="number"></input>
+       </div>
+     </div>
+
+     <div className='label'>
+       <div>Cidade</div>
+       <div>
+         <input type="text"></input>
+       </div>
+     </div>
+
+     <div className='label'>
+       <div>Estado</div>
+       <div>
+         <input type="text"></input>
+       </div>
+     </div>
+     <div>
+      <button onclick="visualization('table')" id="btn">Salvar</button>
+      <button onclick="visualization('table')" id="btn" class="gray">Cancelar</button>
+    </div>
+     
+   </div>
+
+    
+
+
+   </body>
+ 
 </html>
