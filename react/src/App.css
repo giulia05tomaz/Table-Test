@@ -2,6 +2,7 @@
   display: none;
 }
 
+
 #Register{
   display: none;
 }
@@ -66,8 +67,28 @@ table th, table td{
 
 }
 
+
+
+#btn.red{
+  background-color: #a00;
+}
+
 #btn:hover{
   opacity: 0.8;
+}
+
+.paginationselector{
+  display: none;
+}
+
+body[page=table] .paginationselector{
+  display: block;
+}
+
+.box-form{
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  padding: 10px;
 }
 
 

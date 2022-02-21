@@ -46,66 +46,70 @@
              <th>Estado</th>
            </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id='bodyregister'></tbody>
         
       </table>
-      <button onclick="visualization('newregister')" id="btn">Novo Uduario</button>
+      <button onclick="visualization('newregister', true)" id="btn">Novo Usuario</button>
     </div>
-   <div id='Register'>
 
-     <div className='label'>
+
+
+    
+   <div class="form">
+    <form id='Register'>
+     <div class="label">
        <div>ID</div>
        <div>
-         <input type="number"></input>
+         <input type="text" class="box-form" id="id" readonly></input>
        </div>
      </div>
 
-     <div className='label'>
+     <div class="label">
        <div>Nome</div>
        <div>
-         <input type="text"></input>
+         <input type="text" class="box-form" id="nome"></input>
        </div>
      </div>
 
-     <div className='label'>
+     <div class="label">
        <div>Idade</div>
        <div>
-         <input type="number"></input>
+         <input type="text" class="box-form" id="idade"></input>
        </div>
      </div>
 
-     <div className='label'>
+     <div class="label">
        <div>Estado Civil</div>
        <div>
-         <input type="text"></input>
+         <input type="text" class="box-form" id="stdcivil"></input>
        </div>
      </div>
 
-     <div className='label'>
+     <div class="label">
        <div>CPF</div>
        <div>
-         <input type="number"></input>
+         <input type="text" class="box-form" id="cpf"></input>
        </div>
      </div>
 
-     <div className='label'>
+     <div class="label">
        <div>Cidade</div>
        <div>
-         <input type="text"></input>
+         <input type="text" class="box-form" id="cidade"></input>
        </div>
      </div>
 
-     <div className='label'>
+     <div class="label">
        <div>Estado</div>
        <div>
-         <input type="text"></input>
+         <input type="text" class="box-form" id="estado"></input>
        </div>
      </div>
      <div>
-      <button onclick="visualization('table')" id="btn">Salvar</button>
+      <button id="btn" >Salvar</button>
       <button onclick="visualization('table')" id="btn" class="gray">Cancelar</button>
     </div>
-     
+  </form>
    </div>
 
     
