@@ -18,15 +18,22 @@
   background-color:aquamarine;
 }
 
-#listaRegistros{ display: none; }
-#cadastroRegistro{
+#listRegister{ display: none; }
+#registration{
     display: none;
     flex-direction: column;
     gap: 30px;
 }
+#tableRegister{
+  display: none;
+}
 
-body[page=lista] #listaRegistros{ display: block; }
-body[page=cadastro] #cadastroRegistro{ display: flex; }
+
+
+body[page=table] #tableRegister{ display: block; }
+body[page=registrationform] #registration{ display: flex; }
+
+
 
 body{
     font-family: Arial, Helvetica, sans-serif;
@@ -76,3 +83,10 @@ input{
 .label>div>input{
     flex: 1;
 }
+
+
+#newuser{
+  display: none;
+}
+
+body[page=table] #newuser{ display: block; }

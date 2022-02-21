@@ -1,56 +1,60 @@
-const KEY_BD = '@usuariosestudo'
+const KEY_BD = '@clientsestudo'
 
 
-var listaRegistros = {
-    ultimoIdGerado:0,
-    usuarios:[]
+var registerUser = {
+    lastId:0,
+    users:[]
 }
 
 
 var FILTRO = ''
 
 
-function gravarBD(){
-    localStorage.setItem(KEY_BD, JSON.stringify(listaRegistros) )
+function RecordBD(){
+    localStorage.setItem(KEY_BD, JSON.stringify(registerUser) )
 }
 
-function lerBD(){
+function ReadBD(){
     const data = localStorage.getItem(KEY_BD)
     if(data){
-        listaRegistros = JSON.parse(data)
+        registerUser = JSON.parse(data)
     }
-    desenhar()
+    draw()
 }
 
 
-function pesquisar(value){
+function search(value){
     FILTRO = value;
-    desenhar()
+    draw()
 }
 
 
-function desenhar(){
-    const tbody = document.getElementById('listaRegistrosBody')
+function draw(){
+    const tbody = document.getElementById('RgisterBody')
     if(tbody){
-        var data = listaRegistros.usuarios;
+        var data = registerUser.users;
         if(FILTRO.trim()){
             const expReg = eval(`/${FILTRO.trim().replace(/[^\d\w]+/g,'.*')}/i`)
-            data = data.filter( usuario => {
-                return expReg.test( usuario.nome ) || expReg.test( usuario.fone )
+            data = data.filter( client => {
+                return expReg.test( client.nome ) || expReg.test( client.cpf )
             } )
         }
         data = data
             .sort( (a, b) => {
                 return a.nome < b.nome ? -1 : 1
             })
-            .map( usuario => {
+            .map( client => {
                 return `<tr>
-                        <td>${usuario.id}</td>
-                        <td>${usuario.nome}</td>
-                        <td>${usuario.fone}</td>
+                        <td>${client.id}</td>
+                        <td>${client.nome}</td>
+                        <td>${client.idade}</td>
+                        <td>${client.estdcivil}</td>
+                        <td>${client.cpf}</td>
+                        <td>${client.cidade}</td>
+                        <td>${client.estado}</td>
                         <td>
-                            <button onclick='vizualizar("cadastro",false,${usuario.id})'>Editar</button>
-                            <button class='vermelho' onclick='perguntarSeDeleta(${usuario.id})'>Deletar</button>
+                            <button onclick='vizualizar("registrationform",false,${client.id})'>Editar</button>
+                            <button class='vermelho' onclick='AskDelete(${client.id})'>Deletar</button>
                         </td>
                     </tr>`
             } )
@@ -58,56 +62,71 @@ function desenhar(){
     }
 }
 
-function insertUsuario(nome, fone){
-    const id = listaRegistros.ultimoIdGerado + 1;
-    listaRegistros.ultimoIdGerado = id;
-    listaRegistros.usuarios.push({
-        id, nome, fone
+function insertclient(nome, idade, estdcivil, cpf, cidade, estado){
+    const id = registerUser.lastId + 1;
+    registerUser.lastId = id;
+    registerUser.users.push({
+        id, nome, idade, estdcivil, cpf, cidade, estado
     })
-    gravarBD()
-    desenhar()
-    vizualizar('lista')
+    RecordBD()
+    draw()
+    vizualizar('table')
 }
 
-function editUsuario(id, nome, fone){
-    var usuario = listaRegistros.usuarios.find( usuario => usuario.id == id )
-    usuario.nome = nome;
-    usuario.fone = fone;
-    gravarBD()
-    desenhar()
-    vizualizar('lista')
+function editclient(id, nome, idade, estdcivil, cpf, cidade, estado){
+    var client = registerUser.users.find( client => client.id == id )
+    client.nome = nome;
+    client.idade = idade;
+    client.estdcivil = estdcivil;
+    client.cpf = cpf;
+    client.cidade = cidade;
+    client.estado = estado;
+
+    RecordBD()
+    draw()
+    vizualizar('table')
 }
 
-function deleteUsuario(id){
-    listaRegistros.usuarios = listaRegistros.usuarios.filter( usuario => {
-        return usuario.id != id
+function deleteclient(id){
+    registerUser.users = registerUser.users.filter( client => {
+        return client.id != id
     } )
-    gravarBD()
-    desenhar()
+    RecordBD()
+    draw()
 }
 
-function perguntarSeDeleta(id){
+function AskDelete(id){
     if(confirm('Quer deletar o registro de id '+id)){
-        deleteUsuario(id)
+        deleteclient(id)
     }
 }
 
 
 function limparEdicao(){
     document.getElementById('nome').value = ''
-    document.getElementById('fone').value = ''
+    document.getElementById('idade').value = ''
+    document.getElementById('estdcivil').value = ''
+    document.getElementById('cpf').value = ''
+    document.getElementById('cidade').value = ''
+    document.getElementById('estado').value = ''
+
 }
 
-function vizualizar(pagina, novo=false, id=null){
-    document.body.setAttribute('page',pagina)
-    if(pagina === 'cadastro'){
+function vizualizar(page, novo=false, id=null){
+    document.body.setAttribute('page',page)
+    if(page === 'registrationform'){
         if(novo) limparEdicao()
         if(id){
-            const usuario = listaRegistros.usuarios.find( usuario => usuario.id == id )
-            if(usuario){
-                document.getElementById('id').value = usuario.id
-                document.getElementById('nome').value = usuario.nome
-                document.getElementById('fone').value = usuario.fone
+            const client = registerUser.users.find( client => client.id == id )
+            if(client){
+                document.getElementById('id').value = client.id
+                document.getElementById('nome').value = client.nome
+                document.getElementById('idade').value = client.idade
+                document.getElementById('estdcivil').value = client.estdcivil
+                document.getElementById('cpf').value = client.cpf
+                document.getElementById('cidade').value = client.cidade
+                document.getElementById('estado').value = client.estado
+
             }
         }
         document.getElementById('nome').focus()
@@ -116,26 +135,30 @@ function vizualizar(pagina, novo=false, id=null){
 
 
 
-function submeter(e){
+function send(e){
     e.preventDefault()
     const data = {
         id: document.getElementById('id').value,
         nome: document.getElementById('nome').value,
-        fone: document.getElementById('fone').value,
+        idade: document.getElementById('idade').value,
+        estdcivil: document.getElementById('estdcivil').value,
+        cpf: document.getElementById('cpf').value,
+        cidade: document.getElementById('cidade').value,
+        estado: document.getElementById('estado').value,
     }
     if(data.id){
-        editUsuario(data.id, data.nome, data.fone)
+        editclient(data.id, data.nome, data.idade, data.estdcivil, data.cpf, data.cidade, data.estado)
     }else{
-        insertUsuario( data.nome, data.fone )
+        insertclient( data.nome, data.idade, data.estdcivil, data.cpf, data.cidade, data.estado )
     }
 }
 
 
 window.addEventListener('load', () => {
-    lerBD()
-    document.getElementById('cadastroRegistro').addEventListener('submit', submeter)
-    document.getElementById('inputPesquisa').addEventListener('keyup', e => {
-        pesquisar(e.target.value)
+    ReadBD()
+    document.getElementById('registration').addEventListener('submit', send)
+    document.getElementById('inputSearch').addEventListener('keyup', e => {
+        search(e.target.value)
     })
 
 })

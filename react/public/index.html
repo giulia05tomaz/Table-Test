@@ -8,58 +8,94 @@
     <link rel="stylesheet" href="../src/App.css">
 
 </head>
-<body page='lista'>
+<body page='table'>
     
-    <div id='listaRegistros'>
+    <div id='tableRegister'>
 
         <div style='display: flex;'>
             <input style='flex:1' placeholder="PESQUISAR" autofocus id='inputPesquisa' />
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Fone</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id='listaRegistrosBody'></tbody>
-        </table>
+  <table>
+    <thead>
+       <tr>
+         <th>ID</th>
+         <th>Nome</th>
+         <th>Idade</th>
+         <th> Estado Civil</th>
+         <th>CPF</th>
+         <th>Cidade</th>
+         <th>Estado</th>
+       </tr>
+    </thead>
+
+
+    <tbody id="RgisterBody"></tbody>
+  </table>
 
         <div>
-            <button onclick="vizualizar('cadastro', true)">Novo usuário</button>
-        </div>
+            <button onclick="vizualizar('registrationform', true)" id="newuser">Novo usuário</button>
+</div>
+
 
     </div>
 
-    <form id='cadastroRegistro'>
+    <form id='registration'>
 
         <div class='label'>
             <div>ID</div>
             <div>
-                <input type='number' readonly id='id' />
+                <input type='text' readonly id='id' />
             </div>
         </div>
-
+        
         <div class='label'>
-            <div>Nome</div>
-            <div>
-                <input id='nome' />
-            </div>
-        </div>
-
-        <div class='label'>
-            <div>Fone</div>
-            <div>
-                <input type='tel' id='fone' />
-            </div>
-        </div>
-
+          <div>Nome</div>
+          <div>
+              <input type='text' id='nome' />
+          </div>
+      </div>
+      
+      <div class='label'>
+        <div>Idade</div>
         <div>
-            <button>Salvar</button>
-            <button onclick="vizualizar('lista')" class="cinza" type='button'>Cancelar</button>
+            <input type='text' id='idade' />
+        </div>
+    </div>
+    
+    <div class='label'>
+      <div>Estado Civil</div>
+      <div>
+          <input type='text' id='estdcivil' />
+      </div>
+  </div>
+  
+  <div class='label'>
+    <div>CPF</div>
+    <div>
+        <input type='text' id='cpf' />
+    </div>
+</div>
+
+<div class='label'>
+  <div>Cidade</div>
+  <div>
+      <input type='text' id='cidade' />
+  </div>
+</div>
+
+<div class='label'>
+  <div>Estado</div>
+  <div>
+      <input type='text' id='estado' />
+  </div>
+</div>
+
+
+        
+        <div>
+            <button >Salvar</button>
+            <button onclick="vizualizar('table')" class="cinza" type='button'>Cancelar</button>
         </div>
 
     </form>
