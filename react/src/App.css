@@ -1,22 +1,6 @@
-.item {
-  width: 500px;
-  padding: 1em;
-  margin: 1em;
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-around;
-}
 
 
-.paginationButton{
-  border: 1px solid black;
-  margin: 5px;
 
-}
-
-.paginationButton:hover{
-  background-color:aquamarine;
-}
 
 #listRegister{ display: none; }
 #registration{

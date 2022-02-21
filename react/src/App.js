@@ -3,8 +3,6 @@ import {useEffect, useState} from 'react'
 import PaginationComponent from './PaginationComponent';
 import PaginationSelector from './PaginationSelector';
 
-
-
 function App() {
 
   const [itens, setItens] = useState([])
@@ -18,7 +16,7 @@ function App() {
 
     useEffect(() => {
       const fetchData = async () => {
-      const result = await fetch('https://jsonplaceholder.typicode.com/todos')
+      const result = await fetch('tabela')
         .then(response => response.json())
         .then(data => data)
 
