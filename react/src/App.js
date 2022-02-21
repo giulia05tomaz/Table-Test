@@ -3,6 +3,8 @@ import {useEffect, useState} from 'react'
 import PaginationComponent from './PaginationComponent';
 import PaginationSelector from './PaginationSelector';
 
+
+
 function App() {
 
   const [itens, setItens] = useState([])
