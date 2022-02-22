@@ -3,6 +3,8 @@ import {useEffect, useState} from 'react'
 import PaginationComponent from './PaginationComponent';
 import PaginationSelector from './PaginationSelector';
 
+
+
 function App() {
 
   const [itens, setItens] = useState([])
@@ -36,13 +38,7 @@ function App() {
 
      
     
-      <PaginationSelector itensPerPage={itensPerPage} setItensPerPage={setItensPerPage}/>
 
-        {currentItens.map(item => {
-          return <div className='item'><span>{item.id}</span><span>{item.title}</span><span>{item.completed}</span></div>
-        })} 
-
-        <PaginationComponent pages={pages} currentPage= {currentPage} setCurrentPage={setCurrentPage} />
 
     </div>
   );

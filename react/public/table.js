@@ -1,5 +1,3 @@
-
-
 const KEY_BD = '@clientsestudo'
 
 
@@ -32,15 +30,10 @@ function search(value){
 
 
 function draw(){
-    const tbody = document.getElementById('RgisterBody')
+    const tbody = document.getElementById('RegisterBody')
     if(tbody){
         var data = registerUser.users;
-        if(FILTRO.trim()){
-            const expReg = eval(`/${FILTRO.trim().replace(/[^\d\w]+/g,'.*')}/i`)
-            data = data.filter( client => {
-                return expReg.test( client.nome ) || expReg.test( client.cpf )
-            } )
-        }
+       
         data = data
             .sort( (a, b) => {
                 return a.nome < b.nome ? -1 : 1
@@ -135,7 +128,21 @@ function vizualizar(page, novo=false, id=null){
     }
 }
 
+function writeUserData(id, nome, idade, estdcivil, cpf, cidade, estado) {
+    firebase.database().ref('users/' + userId).set({
+      id:id,
+      nome:nome,
+      idade:idade,
+      estdcivil:estdcivil,
+      cpf:cpf,
+      cidade:cidade,
+      estado:estado
 
+      
+    });
+    RecordBD()
+    draw()
+  }
 
 function send(e){
     e.preventDefault()

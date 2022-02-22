@@ -24,10 +24,6 @@
     <div class="pagnationButton"></div>
     <div id='tableRegister'>
 
-        <div style='display: flex;'>
-            <input style='flex:1' placeholder="PESQUISAR" autofocus id='inputPesquisa' />
-        </div>
-
   <table>
     <thead>
        <tr>
@@ -42,7 +38,7 @@
     </thead>
 
 
-    <tbody id="RgisterBody"></tbody>
+    <tbody id="RegisterBody"></tbody>
   </table>
 
         <div>
@@ -54,10 +50,12 @@
 
     <form id='registration'>
 
+      <h1>Preencha todos os Campos</h1>
+
         <div class='label'>
             <div>ID</div>
             <div>
-                <input type='text' readonly id='id' />
+                <input type='text' readonly id='id' class="" />
             </div>
         </div>
         
@@ -106,12 +104,13 @@
 
         
         <div>
-            <button >Salvar</button>
+            <button onclick="writeUserData('table')">Salvar</button>
             <button onclick="vizualizar('table')" class="cinza" type='button'>Cancelar</button>
         </div>
 
     </form>
 
+   
 </body>
 
 </html>
