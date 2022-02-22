@@ -128,21 +128,6 @@ function vizualizar(page, novo=false, id=null){
     }
 }
 
-function writeUserData(id, nome, idade, estdcivil, cpf, cidade, estado) {
-    firebase.database().ref('users/' + userId).set({
-      id:id,
-      nome:nome,
-      idade:idade,
-      estdcivil:estdcivil,
-      cpf:cpf,
-      cidade:cidade,
-      estado:estado
-
-      
-    });
-    RecordBD()
-    draw()
-  }
 
 function send(e){
     e.preventDefault()
